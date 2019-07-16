@@ -787,6 +787,9 @@ struct dvb_frontend *dvb_pll_attach(struct dvb_frontend *fe, int pll_addr,
 	struct dvb_pll_priv *priv = NULL;
 	int ret;
 	const struct dvb_pll_desc *desc;
+	
+        if (dvb_pll_devcount > DVB_PLL_MAX-1)
+                return NULL;
 
 	b1 = kmalloc(1, GFP_KERNEL);
 	if (!b1)
